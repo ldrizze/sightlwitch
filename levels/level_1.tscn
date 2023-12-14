@@ -1,0 +1,168 @@
+[gd_scene load_steps=17 format=3 uid="uid://c8sfqihaq81dl"]
+
+[ext_resource type="Script" path="res://levels-scripts/level_1_script.gd" id="1_ddpmg"]
+[ext_resource type="Script" path="res://character_script.gd" id="2_s3tux"]
+[ext_resource type="SpriteFrames" uid="uid://gtxt1ly4x1kq" path="res://character_anim.tres" id="3_uptj2"]
+[ext_resource type="TileSet" uid="uid://d1qmypxau4f03" path="res://map_tile_set.tres" id="4_0g3mw"]
+[ext_resource type="AudioStream" uid="uid://did7rv621lxv1" path="res://sfx/light-switch-81967.mp3" id="4_xjaho"]
+[ext_resource type="Texture2D" uid="uid://dodimdsaeofg2" path="res://vendor/1-Bit Platformer Pack/Tiles/Transparent/tile_0097.png" id="5_mkaby"]
+[ext_resource type="SpriteFrames" uid="uid://d0dbjj6xx7jjl" path="res://door_anim.tres" id="6_lfkc3"]
+[ext_resource type="Script" path="res://BackgroundColor.gd" id="7_3a2wt"]
+[ext_resource type="Texture2D" uid="uid://cctjynkyukbeb" path="res://level-design/1.PNG" id="8_ikylg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xyr5i"]
+size = Vector2(7, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2boxm"]
+size = Vector2(2, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tvwx"]
+size = Vector2(4.25, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eh0eq"]
+size = Vector2(7, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pw2v7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61x7f"]
+size = Vector2(20, 369)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bth4q"]
+size = Vector2(20, 369)
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_ddpmg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("spawn")]
+z_index = 1
+position = Vector2(326, 195)
+collision_mask = 6
+script = ExtResource("2_s3tux")
+GRAVITY = 9.81
+jump_force = 85.0
+walk_velocity = 120.0
+mass = 15.0
+spawn = NodePath("../Spawn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(1, -6)
+sprite_frames = ExtResource("3_uptj2")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-0.75, 2)
+shape = SubResource("RectangleShape2D_xyr5i")
+
+[node name="Foot" type="Area2D" parent="CharacterBody2D"]
+position = Vector2(0, 20)
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Foot"]
+position = Vector2(-0.75, -13.5)
+shape = SubResource("RectangleShape2D_2boxm")
+debug_color = Color(0.913725, 0.235294, 0.443137, 0.419608)
+
+[node name="Pick" type="Area2D" parent="CharacterBody2D"]
+collision_mask = 480
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Pick"]
+position = Vector2(3.375, 2)
+shape = SubResource("RectangleShape2D_7tvwx")
+debug_color = Color(0.92549, 0.152941, 0.572549, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D/Pick"]
+position = Vector2(-5, 2)
+shape = SubResource("RectangleShape2D_7tvwx")
+debug_color = Color(0.92549, 0.152941, 0.572549, 0.419608)
+
+[node name="RespawnTimer" type="Timer" parent="CharacterBody2D"]
+one_shot = true
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("4_xjaho")
+
+[node name="Spawn" type="Marker2D" parent="."]
+position = Vector2(321, 144)
+
+[node name="Map" type="Node" parent="."]
+
+[node name="Terrain" type="TileMap" parent="Map" groups=["terrain"]]
+tile_set = ExtResource("4_0g3mw")
+format = 2
+layer_0/tile_data = PackedInt32Array(917513, 458752, 4, 917514, 524288, 4, 917515, 524288, 4, 917516, 524288, 4, 917517, 524288, 4, 917518, 524288, 4, 917519, 524288, 4, 917520, 524288, 4, 917521, 524288, 4, 917522, 524288, 4, 917523, 524288, 4, 917524, 524288, 4, 917525, 524288, 4, 917526, 524288, 4, 917527, 524288, 4, 917528, 524288, 4, 917529, 524288, 4, 917530, 524288, 4, 917531, 524288, 4, 917532, 524288, 4, 917533, 524288, 4, 917534, 524288, 4, 917535, 524288, 4, 917536, 524288, 4, 917537, 589824, 4, 983049, 458752, 5, 1048585, 458752, 5, 1114121, 458752, 5, 1179657, 458752, 5, 1245193, 458752, 5, 1310729, 458752, 5, 983050, 524288, 5, 1048586, 524288, 5, 1114122, 524288, 5, 1179658, 524288, 5, 1245194, 524288, 5, 1310730, 524288, 5, 983051, 524288, 5, 1048587, 524288, 5, 1114123, 524288, 5, 1179659, 524288, 5, 1245195, 524288, 5, 1310731, 524288, 5, 983052, 524288, 5, 1048588, 524288, 5, 1114124, 524288, 5, 1179660, 524288, 5, 1245196, 524288, 5, 1310732, 524288, 5, 983053, 524288, 5, 1048589, 524288, 5, 1114125, 524288, 5, 1179661, 524288, 5, 1245197, 524288, 5, 1310733, 524288, 5, 983054, 524288, 5, 1048590, 524288, 5, 1114126, 524288, 5, 1179662, 524288, 5, 1245198, 524288, 5, 1310734, 524288, 5, 983055, 524288, 5, 1048591, 524288, 5, 1114127, 524288, 5, 1179663, 524288, 5, 1245199, 524288, 5, 1310735, 524288, 5, 983056, 524288, 5, 1048592, 524288, 5, 1114128, 524288, 5, 1179664, 524288, 5, 1245200, 524288, 5, 1310736, 524288, 5, 983057, 524288, 5, 1048593, 524288, 5, 1114129, 524288, 5, 1179665, 524288, 5, 1245201, 524288, 5, 1310737, 524288, 5, 983058, 524288, 5, 1048594, 524288, 5, 1114130, 524288, 5, 1179666, 524288, 5, 1245202, 524288, 5, 1310738, 524288, 5, 983059, 524288, 5, 1048595, 524288, 5, 1114131, 524288, 5, 1179667, 524288, 5, 1245203, 524288, 5, 1310739, 524288, 5, 983060, 524288, 5, 1048596, 524288, 5, 1114132, 524288, 5, 1179668, 524288, 5, 1245204, 524288, 5, 1310740, 524288, 5, 983061, 524288, 5, 1048597, 524288, 5, 1114133, 524288, 5, 1179669, 524288, 5, 1245205, 524288, 5, 1310741, 524288, 5, 983062, 524288, 5, 1048598, 524288, 5, 1114134, 524288, 5, 1179670, 524288, 5, 1245206, 524288, 5, 1310742, 524288, 5, 983063, 524288, 5, 1048599, 524288, 5, 1114135, 524288, 5, 1179671, 524288, 5, 1245207, 524288, 5, 1310743, 524288, 5, 983064, 524288, 5, 1048600, 524288, 5, 1114136, 524288, 5, 1179672, 524288, 5, 1245208, 524288, 5, 1310744, 524288, 5, 983065, 524288, 5, 1048601, 524288, 5, 1114137, 524288, 5, 1179673, 524288, 5, 1245209, 524288, 5, 1310745, 524288, 5, 983066, 524288, 5, 1048602, 524288, 5, 1114138, 524288, 5, 1179674, 524288, 5, 1245210, 524288, 5, 1310746, 524288, 5, 983067, 524288, 5, 1048603, 524288, 5, 1114139, 524288, 5, 1179675, 524288, 5, 1245211, 524288, 5, 1310747, 524288, 5, 983068, 524288, 5, 1048604, 524288, 5, 1114140, 524288, 5, 1179676, 524288, 5, 1245212, 524288, 5, 1310748, 524288, 5, 983069, 524288, 5, 1048605, 524288, 5, 1114141, 524288, 5, 1179677, 524288, 5, 1245213, 524288, 5, 1310749, 524288, 5, 983070, 524288, 5, 1048606, 524288, 5, 1114142, 524288, 5, 1179678, 524288, 5, 1245214, 524288, 5, 1310750, 524288, 5, 983071, 524288, 5, 1048607, 524288, 5, 1114143, 524288, 5, 1179679, 524288, 5, 1245215, 524288, 5, 1310751, 524288, 5, 983072, 524288, 5, 1048608, 524288, 5, 1114144, 524288, 5, 1179680, 524288, 5, 1245216, 524288, 5, 1310752, 524288, 5, 983073, 589824, 5, 1048609, 589824, 5, 1114145, 589824, 5, 1179681, 589824, 5, 1245217, 589824, 5, 1310753, 589824, 5, 1376265, 458752, 5, 1441801, 458752, 5, 1376266, 524288, 5, 1441802, 524288, 5, 1376267, 524288, 5, 1441803, 524288, 5, 1376268, 524288, 5, 1441804, 524288, 5, 1376269, 524288, 5, 1441805, 524288, 5, 1376270, 524288, 5, 1441806, 524288, 5, 1376271, 524288, 5, 1441807, 524288, 5, 1376272, 524288, 5, 1441808, 524288, 5, 1376273, 524288, 5, 1441809, 524288, 5, 1376274, 524288, 5, 1441810, 524288, 5, 1376275, 524288, 5, 1441811, 524288, 5, 1376276, 524288, 5, 1441812, 524288, 5, 1376277, 524288, 5, 1441813, 524288, 5, 1376278, 524288, 5, 1441814, 524288, 5, 1376279, 524288, 5, 1441815, 524288, 5, 1376280, 524288, 5, 1441816, 524288, 5, 1376281, 524288, 5, 1441817, 524288, 5, 1376282, 524288, 5, 1441818, 524288, 5, 1376283, 524288, 5, 1441819, 524288, 5, 1376284, 524288, 5, 1441820, 524288, 5, 1376285, 524288, 5, 1441821, 524288, 5, 1376286, 524288, 5, 1441822, 524288, 5, 1376287, 524288, 5, 1441823, 524288, 5, 1376288, 524288, 5, 1441824, 524288, 5, 1376289, 589824, 5, 1441825, 589824, 5)
+
+[node name="Key" type="Node2D" parent="Map"]
+position = Vector2(182, 217)
+
+[node name="Area2D" type="Area2D" parent="Map/Key" groups=["key"]]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Key/Area2D"]
+shape = SubResource("RectangleShape2D_eh0eq")
+debug_color = Color(0.317647, 0.619608, 0.27451, 0.419608)
+
+[node name="KeySprite" type="Sprite2D" parent="Map/Key"]
+texture = ExtResource("5_mkaby")
+
+[node name="Door" type="Node2D" parent="Map"]
+position = Vector2(498, 217)
+
+[node name="Area2D" type="Area2D" parent="Map/Door" groups=["door"]]
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Door/Area2D"]
+shape = SubResource("RectangleShape2D_pw2v7")
+debug_color = Color(0.686275, 0.494118, 0.219608, 0.419608)
+
+[node name="DoorSprite" type="AnimatedSprite2D" parent="Map/Door"]
+sprite_frames = ExtResource("6_lfkc3")
+
+[node name="BackgroundColor" type="Node2D" parent="Map"]
+z_index = -1
+script = ExtResource("7_3a2wt")
+
+[node name="LeftWall" type="StaticBody2D" parent="Map"]
+position = Vector2(137, 362)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/LeftWall"]
+position = Vector2(0, -174.5)
+shape = SubResource("RectangleShape2D_61x7f")
+
+[node name="RightWall" type="StaticBody2D" parent="Map"]
+position = Vector2(549, 362)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/RightWall"]
+position = Vector2(0, -174.5)
+shape = SubResource("RectangleShape2D_bth4q")
+
+[node name="1" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.164706, 0.164706, 0.164706, 1)
+position = Vector2(318, 188)
+scale = Vector2(0.502161, 0.50216)
+texture = ExtResource("8_ikylg")
+
+[node name="Control" type="CenterContainer" parent="."]
+offset_right = 640.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 2
+text = "Use the arrow keys to walk and pick up the key and enter into the door"
+
+[node name="NextSceneTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="CharacterBody2D/Foot" to="CharacterBody2D" method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="CharacterBody2D/Pick" to="CharacterBody2D" method="_on_pick_area_entered"]
+[connection signal="timeout" from="CharacterBody2D/RespawnTimer" to="CharacterBody2D" method="_on_respawn_timer_timeout"]
+[connection signal="area_entered" from="Map/Door/Area2D" to="CharacterBody2D" method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="NextSceneTimer" to="." method="_on_timer_timeout"]
