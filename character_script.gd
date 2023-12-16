@@ -135,12 +135,12 @@ func _on_respawn_timer_timeout():
 
 func _on_pick_area_entered(area: Area2D):
 	if area.is_in_group("key"):
+		if _key_pickup_sfx != null and !_has_the_key:
+			_key_pickup_sfx.play()
+
 		_has_the_key = true
 		_key = area.get_parent()
 		_key.hide()
-		
-		if _key_pickup_sfx != null:
-			_key_pickup_sfx.play()
 
 		if area.is_in_group("light_switch_blue"):
 			LightSwitchController.blue()

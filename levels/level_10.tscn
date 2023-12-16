@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dqugfpdtx3467"]
+[gd_scene load_steps=27 format=3 uid="uid://687j37fv8877"]
 
 [ext_resource type="Script" path="res://character_script.gd" id="1_1wpy1"]
 [ext_resource type="Script" path="res://levels-scripts/level_10_script.gd" id="1_aur7n"]
@@ -6,10 +6,16 @@
 [ext_resource type="AudioStream" uid="uid://did7rv621lxv1" path="res://sfx/light-switch-81967.mp3" id="3_ooc0o"]
 [ext_resource type="TileSet" uid="uid://c4crmo1po74jt" path="res://raw_map_tile_set.tres" id="4_oj0dh"]
 [ext_resource type="Texture2D" uid="uid://dodimdsaeofg2" path="res://vendor/1-Bit Platformer Pack/Tiles/Transparent/tile_0097.png" id="5_8hjtb"]
+[ext_resource type="AudioStream" uid="uid://cmi0y0sx75m8n" path="res://sfx/landing.wav" id="5_tyx01"]
+[ext_resource type="AudioStream" uid="uid://d2hptohti3ffr" path="res://sfx/350905__cabled_mess__jump_c_05.wav" id="6_gwd1l"]
 [ext_resource type="SpriteFrames" uid="uid://d0dbjj6xx7jjl" path="res://door_anim.tres" id="6_od7a3"]
 [ext_resource type="Texture2D" uid="uid://b4fg2kx57xe6l" path="res://switch.png" id="7_bolw0"]
+[ext_resource type="AudioStream" uid="uid://b4wsmff00tpa4" path="res://sfx/646672__sounddesignforyou__coin-pickup-sfx-2.wav" id="7_df5bh"]
 [ext_resource type="Script" path="res://BackgroundColor.gd" id="8_otfcp"]
+[ext_resource type="AudioStream" uid="uid://bm0fw758kdtxr" path="res://sfx/443276__loscolt890__gravelfootstep003.wav" id="8_p5dr8"]
 [ext_resource type="Script" path="res://moving_platform.gd" id="9_2tkre"]
+[ext_resource type="AudioStream" uid="uid://bax220aygkbcx" path="res://sfx/443277__loscolt890__gravelfootstep002.wav" id="9_irywv"]
+[ext_resource type="AudioStream" uid="uid://yl7a41422l1" path="res://sfx/443278__loscolt890__gravelfootstep001.wav" id="10_slmcm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyr5i"]
 size = Vector2(7, 8)
@@ -101,6 +107,34 @@ shape = SubResource("RectangleShape2D_4lccq")
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="CharacterBody2D"]
 stream = ExtResource("3_ooc0o")
+
+[node name="Land" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("5_tyx01")
+volume_db = -10.0
+
+[node name="Jump" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("6_gwd1l")
+
+[node name="KeyPick" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("7_df5bh")
+volume_db = -3.0
+
+[node name="FootstepsSFX" type="Node" parent="CharacterBody2D"]
+
+[node name="FS1" type="AudioStreamPlayer" parent="CharacterBody2D/FootstepsSFX"]
+stream = ExtResource("8_p5dr8")
+volume_db = -12.0
+pitch_scale = 3.0
+
+[node name="FS2" type="AudioStreamPlayer" parent="CharacterBody2D/FootstepsSFX"]
+stream = ExtResource("9_irywv")
+volume_db = -12.0
+pitch_scale = 3.0
+
+[node name="FS3" type="AudioStreamPlayer" parent="CharacterBody2D/FootstepsSFX"]
+stream = ExtResource("10_slmcm")
+volume_db = -12.0
+pitch_scale = 3.0
 
 [node name="SpawnMark" type="Marker2D" parent="."]
 position = Vector2(388, 119)
@@ -255,6 +289,10 @@ collision_layer = 2
 position = Vector2(0, -174.5)
 shape = SubResource("RectangleShape2D_rwov1")
 
+[node name="NextSceneTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="CharacterBody2D/Foot" to="CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="CharacterBody2D/Pick" to="CharacterBody2D" method="_on_pick_area_entered"]
@@ -265,3 +303,4 @@ shape = SubResource("RectangleShape2D_rwov1")
 [connection signal="area_exited" from="Map/BlueSwitch/BlueSwitch" to="CharacterBody2D" method="_on_blue_switch_area_exited"]
 [connection signal="area_entered" from="Map/RedSwitch/RedSwitch" to="CharacterBody2D" method="_on_red_switch_area_entered"]
 [connection signal="area_exited" from="Map/RedSwitch/RedSwitch" to="CharacterBody2D" method="_on_red_switch_area_exited"]
+[connection signal="timeout" from="NextSceneTimer" to="." method="_on_next_scene_timer_timeout"]

@@ -124,18 +124,18 @@ volume_db = -3.0
 
 [node name="FS1" type="AudioStreamPlayer" parent="CharacterBody2D/FootstepsSFX"]
 stream = ExtResource("8_esnhk")
-volume_db = -10.0
-pitch_scale = 4.0
+volume_db = -12.0
+pitch_scale = 3.0
 
 [node name="FS2" type="AudioStreamPlayer" parent="CharacterBody2D/FootstepsSFX"]
 stream = ExtResource("9_kqbpi")
-volume_db = -10.0
-pitch_scale = 4.0
+volume_db = -12.0
+pitch_scale = 3.0
 
 [node name="FS3" type="AudioStreamPlayer" parent="CharacterBody2D/FootstepsSFX"]
 stream = ExtResource("10_8mjkd")
-volume_db = -10.0
-pitch_scale = 4.0
+volume_db = -12.0
+pitch_scale = 3.0
 
 [node name="SpawnMark" type="Marker2D" parent="."]
 position = Vector2(74, 298)
@@ -654,6 +654,10 @@ collision_layer = 2
 position = Vector2(0, -174.5)
 shape = SubResource("RectangleShape2D_rwov1")
 
+[node name="NextSceneTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="CharacterBody2D/Foot" to="CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="CharacterBody2D/Pick" to="CharacterBody2D" method="_on_pick_area_entered"]
@@ -664,3 +668,4 @@ shape = SubResource("RectangleShape2D_rwov1")
 [connection signal="area_exited" from="Map/BlueSwitch/BlueSwitch" to="CharacterBody2D" method="_on_blue_switch_area_exited"]
 [connection signal="area_entered" from="Map/RedSwitch/RedSwitch" to="CharacterBody2D" method="_on_red_switch_area_entered"]
 [connection signal="area_exited" from="Map/RedSwitch/RedSwitch" to="CharacterBody2D" method="_on_red_switch_area_exited"]
+[connection signal="timeout" from="NextSceneTimer" to="." method="_on_next_scene_timer_timeout"]
