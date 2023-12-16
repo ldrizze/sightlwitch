@@ -7,8 +7,14 @@ var _reds: Array = []
 var _blues: Array = []
 
 func _ready():
-	var items = get_tree().root.get_node("/root/main/Map").get_children()
+	var map = get_tree().root.get_node("/root/main/Map")
+	
+	if not map:
+		return
+	
+	var items = map.get_children()
 	var mps = get_tree().root.get_node("/root/main/Map/MPS")
+	
 	if mps != null:
 		for c in mps.get_children():
 			items.push_back(c)

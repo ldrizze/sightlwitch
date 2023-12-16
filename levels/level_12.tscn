@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cyibypeghgp4a"]
+[gd_scene load_steps=30 format=3 uid="uid://th2pxnbcd3g5"]
 
 [ext_resource type="Script" path="res://levels-scripts/level_12_script.gd" id="1_ctve6"]
 [ext_resource type="Script" path="res://character_script.gd" id="1_jv44e"]
@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://moving_platform.gd" id="9_l8hgm"]
 [ext_resource type="AudioStream" uid="uid://yl7a41422l1" path="res://sfx/443278__loscolt890__gravelfootstep001.wav" id="9_vbjqj"]
 [ext_resource type="Script" path="res://bat_script.gd" id="10_c0clm"]
-[ext_resource type="SpriteFrames" uid="uid://bdlhceaja6nmv" path="res://bat.tres" id="10_no4i5"]
+[ext_resource type="SpriteFrames" uid="uid://c8dh6lcjkviiw" path="res://bat.tres" id="10_no4i5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyr5i"]
 size = Vector2(7, 8)
