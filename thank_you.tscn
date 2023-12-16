@@ -24,45 +24,18 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="CreditItem" type="Control" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -166.0
-offset_bottom = -100.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Name" type="Label" parent="CanvasLayer/Control/CreditItem"]
+[node name="ThankYou" type="Label" parent="CanvasLayer/Control"]
 modulate = Color(1, 0.458824, 0.47451, 1)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 25.0
+offset_top = 99.0
+offset_bottom = 140.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_6ljje")
-theme_override_font_sizes/font_size = 20
-text = "Matheus \"Têco\" Crivellari"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Description" type="Label" parent="CanvasLayer/Control/CreditItem"]
-modulate = Color(1, 0.772549, 0.47451, 1)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_6ljje")
-text = "Level design • GUI"
+theme_override_font_sizes/font_size = 33
+text = "Thank you for playing!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -70,16 +43,15 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.838889
+anchor_top = 0.855556
 anchor_right = 0.5
-anchor_bottom = 0.838889
+anchor_bottom = 0.855556
 offset_left = -62.0
-offset_top = -52.0
+offset_top = -109.0
 offset_right = 62.0
-offset_bottom = -17.0
+offset_bottom = -74.0
 grow_horizontal = 2
 grow_vertical = 0
-metadata/_edit_use_anchors_ = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control/ButtonPlayAgain"]
 layout_mode = 1
@@ -120,9 +92,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -62.0
-offset_top = -52.0
+offset_top = -109.0
 offset_right = 62.0
-offset_bottom = -17.0
+offset_bottom = -74.0
 grow_horizontal = 2
 grow_vertical = 0
 
