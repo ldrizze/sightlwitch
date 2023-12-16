@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://cn24656k70xrj"]
+
+[ext_resource type="Texture2D" uid="uid://dw1lnjs4xcynk" path="res://switch-frames.png" id="1_cvwif"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54upi"]
+atlas = ExtResource("1_cvwif")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckq8v"]
+atlas = ExtResource("1_cvwif")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54upi")
+}],
+"loop": false,
+"name": &"off",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckq8v")
+}],
+"loop": false,
+"name": &"on",
+"speed": 0.0
+}]

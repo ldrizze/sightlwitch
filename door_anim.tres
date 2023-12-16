@@ -1,20 +1,30 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://d0dbjj6xx7jjl"]
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://d0dbjj6xx7jjl"]
 
-[ext_resource type="Texture2D" uid="uid://dyueegs5dfpy7" path="res://vendor/1-Bit Platformer Pack/Tiles/Transparent/tile_0056.png" id="1_jhode"]
-[ext_resource type="Texture2D" uid="uid://bjfofru88qsmo" path="res://vendor/1-Bit Platformer Pack/Tiles/Transparent/tile_0058.png" id="2_xp74x"]
-[ext_resource type="Texture2D" uid="uid://bkk7tawo0aaw" path="res://vendor/1-Bit Platformer Pack/Tiles/Transparent/tile_0059.png" id="3_afdtb"]
+[ext_resource type="Texture2D" uid="uid://uc6tx8xd4qav" path="res://door.png" id="1_t3uf5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyty4"]
+atlas = ExtResource("1_t3uf5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh6f2"]
+atlas = ExtResource("1_t3uf5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6711"]
+atlas = ExtResource("1_t3uf5")
+region = Rect2(32, 0, 16, 16)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_jhode")
+"texture": SubResource("AtlasTexture_jyty4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_xp74x")
+"texture": SubResource("AtlasTexture_eh6f2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_afdtb")
+"texture": SubResource("AtlasTexture_c6711")
 }],
 "loop": false,
 "name": &"default",

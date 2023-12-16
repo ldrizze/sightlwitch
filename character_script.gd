@@ -21,6 +21,10 @@ var _jump_acc: float = 0
 var _jump_sfx: AudioStreamPlayer
 var _land_sfx: AudioStreamPlayer
 var _key_pickup_sfx: AudioStreamPlayer
+var _open_door_sfx: AudioStreamPlayer
+var _death_sfx: AudioStreamPlayer
+
+var _switch_instance: Node2D
 
 var _footstep_sfx = []
 var _footstep_acc = 0
@@ -31,9 +35,13 @@ func _ready():
 	_jump_sfx = $Jump
 	_land_sfx = $Land
 	_key_pickup_sfx = $KeyPick
+	_death_sfx = $Death
+	
 	_footstep_sfx.append($FootstepsSFX/FS1)
 	_footstep_sfx.append($FootstepsSFX/FS2)
 	_footstep_sfx.append($FootstepsSFX/FS3)
+	
+	_open_door_sfx = $OpenDoor
 
 func _process(delta):
 	if _stop:
@@ -42,6 +50,9 @@ func _process(delta):
 	if _dead:
 		if $AnimatedSprite2D.animation != "dead":
 			$AnimatedSprite2D.play("dead")
+			
+			if _death_sfx != null:
+				_death_sfx.play()
 		return
 	
 	if Input.is_action_just_pressed("interact"):
@@ -50,6 +61,10 @@ func _process(delta):
 			(_on_red_switch and !LightSwitchController._actual)
 		   ):
 			LightSwitchController.switch()
+			
+			if _switch_instance != null:
+				_switch_instance.switch()
+			
 			if $ClickSound != null:
 				$ClickSound.play()
 	
@@ -149,6 +164,7 @@ func _on_pick_area_entered(area: Area2D):
 
 func _on_blue_switch_area_entered(area):
 	_on_blue_switch = true
+	_switch_instance = get_node("/root/main/Map/BlueSwitch")
 
 func _on_blue_switch_area_exited(area):
 	_on_blue_switch = false
@@ -161,11 +177,15 @@ func _on_area_2d_area_entered(area):
 		$AnimatedSprite2D.play("idle")
 		$AnimatedSprite2D.stop()
 
+		if _open_door_sfx != null:
+			_open_door_sfx.play()
+
 		var next_scene = get_node("/root/main/NextSceneTimer")
 		if next_scene != null:
 			next_scene.start()
 
 func _on_red_switch_area_entered(area):
+	_switch_instance = get_node("/root/main/Map/RedSwitch")
 	_on_red_switch = true
 
 func _on_red_switch_area_exited(area):
