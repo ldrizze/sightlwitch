@@ -1,16 +1,21 @@
-[gd_scene load_steps=23 format=3 uid="uid://w6igdu7o73on"]
+[gd_scene load_steps=28 format=3 uid="uid://w6igdu7o73on"]
 
 [ext_resource type="Script" path="res://levels-scripts/level_4_script.gd" id="1_hvncu"]
 [ext_resource type="Script" path="res://character_script.gd" id="1_x7pf4"]
 [ext_resource type="SpriteFrames" uid="uid://gtxt1ly4x1kq" path="res://character_anim.tres" id="2_dlh7v"]
-[ext_resource type="TileSet" uid="uid://d1qmypxau4f03" path="res://map_tile_set.tres" id="3_v3d2s"]
 [ext_resource type="TileSet" uid="uid://bdvy6cg5kke5k" path="res://red_tile_set.tres" id="4_eoiou"]
 [ext_resource type="AudioStream" uid="uid://did7rv621lxv1" path="res://sfx/light-switch-81967.mp3" id="4_fhkxr"]
+[ext_resource type="AudioStream" uid="uid://d2hptohti3ffr" path="res://sfx/350905__cabled_mess__jump_c_05.wav" id="5_gejkq"]
 [ext_resource type="TileSet" uid="uid://b4trdlriiqbos" path="res://blue_tile_set.tres" id="5_s5nml"]
+[ext_resource type="AudioStream" uid="uid://cmi0y0sx75m8n" path="res://sfx/landing.wav" id="6_cfdhc"]
 [ext_resource type="Texture2D" uid="uid://dodimdsaeofg2" path="res://vendor/1-Bit Platformer Pack/Tiles/Transparent/tile_0097.png" id="6_vjhc4"]
 [ext_resource type="SpriteFrames" uid="uid://d0dbjj6xx7jjl" path="res://door_anim.tres" id="7_43o4l"]
+[ext_resource type="AudioStream" uid="uid://b4wsmff00tpa4" path="res://sfx/646672__sounddesignforyou__coin-pickup-sfx-2.wav" id="7_mlgo0"]
+[ext_resource type="AudioStream" uid="uid://bm0fw758kdtxr" path="res://sfx/443276__loscolt890__gravelfootstep003.wav" id="8_xtxas"]
+[ext_resource type="AudioStream" uid="uid://bax220aygkbcx" path="res://sfx/443277__loscolt890__gravelfootstep002.wav" id="9_3s607"]
 [ext_resource type="Script" path="res://BackgroundColor.gd" id="9_mqt7b"]
 [ext_resource type="Texture2D" uid="uid://b4fg2kx57xe6l" path="res://switch.png" id="9_sb8b1"]
+[ext_resource type="AudioStream" uid="uid://yl7a41422l1" path="res://sfx/443278__loscolt890__gravelfootstep001.wav" id="10_xc5xl"]
 [ext_resource type="Script" path="res://moving_platform.gd" id="11_80kj1"]
 [ext_resource type="TileSet" uid="uid://c4crmo1po74jt" path="res://raw_map_tile_set.tres" id="12_gq4da"]
 
@@ -93,6 +98,35 @@ one_shot = true
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="CharacterBody2D"]
 stream = ExtResource("4_fhkxr")
+volume_db = -10.0
+
+[node name="Jump" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("5_gejkq")
+
+[node name="Land" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("6_cfdhc")
+volume_db = -10.0
+
+[node name="KeyPick" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("7_mlgo0")
+volume_db = -3.0
+
+[node name="FootstepsSFX" type="Node" parent="CharacterBody2D"]
+
+[node name="FS1" type="AudioStreamPlayer" parent="CharacterBody2D/FootstepsSFX"]
+stream = ExtResource("8_xtxas")
+volume_db = -10.0
+pitch_scale = 4.0
+
+[node name="FS2" type="AudioStreamPlayer" parent="CharacterBody2D/FootstepsSFX"]
+stream = ExtResource("9_3s607")
+volume_db = -10.0
+pitch_scale = 4.0
+
+[node name="FS3" type="AudioStreamPlayer" parent="CharacterBody2D/FootstepsSFX"]
+stream = ExtResource("10_xc5xl")
+volume_db = -10.0
+pitch_scale = 4.0
 
 [node name="Spawn" type="Marker2D" parent="."]
 position = Vector2(99, 223)
@@ -100,7 +134,7 @@ position = Vector2(99, 223)
 [node name="Map" type="Node" parent="."]
 
 [node name="Terrain" type="TileMap" parent="Map" groups=["terrain"]]
-tile_set = ExtResource("3_v3d2s")
+tile_set = ExtResource("12_gq4da")
 format = 2
 layer_0/tile_data = PackedInt32Array(1048580, 524288, 4, 1376260, 524288, 6, 1048581, 524288, 4, 1376261, 524288, 6, 1048582, 524288, 4, 1376262, 524288, 6, 1048583, 524288, 4, 1376263, 524288, 6, 1048584, 524288, 4, 1376264, 524288, 6, 1048585, 524288, 4, 1376265, 524288, 6, 1048586, 524288, 4, 1376266, 524288, 6, 1048587, 524288, 4, 1376267, 524288, 6, 1048588, 524288, 4, 1376268, 524288, 6, 1048589, 524288, 4, 1376269, 524288, 6, 1048590, 589824, 4, 1376270, 589824, 6, 1376271, 720896, 5, 1376272, 720896, 5, 1376273, 720896, 5, 1376274, 720896, 5, 1376275, 720896, 5, 1376276, 720896, 5, 1376277, 720896, 5, 1376278, 720896, 5, 1376279, 720896, 5, 1376280, 458752, 6, 1048601, 524288, 4, 1376281, 524288, 6, 1048602, 524288, 4, 1376282, 524288, 6, 1048603, 524288, 4, 1376283, 524288, 6, 1048604, 524288, 4, 1376284, 524288, 6, 1048605, 524288, 4, 1376285, 524288, 6, 1048606, 524288, 4, 1376286, 524288, 6, 1048607, 524288, 4, 1376287, 524288, 6, 1048608, 524288, 4, 1376288, 524288, 6, 1048609, 524288, 4, 1376289, 524288, 6, 1048610, 524288, 4, 1376290, 524288, 6, 1048611, 589824, 4, 1376291, 589824, 6, 1048579, 458752, 4, 1114115, 458752, 5, 1179651, 458752, 5, 1245187, 458752, 5, 1310723, 458752, 5, 1376259, 458752, 6, 1114126, 589824, 5, 1179662, 589824, 5, 1245198, 589824, 5, 1310734, 589824, 5, 1048600, 458752, 4, 1114136, 458752, 5, 1179672, 458752, 5, 1245208, 458752, 5, 1310744, 458752, 5, 1114147, 589824, 5, 1179683, 589824, 5, 1245219, 589824, 5, 1310755, 589824, 5, 1114116, 524288, 5, 1179652, 524288, 5, 1245188, 524288, 5, 1310724, 524288, 5, 1114117, 524288, 5, 1179653, 524288, 5, 1245189, 524288, 5, 1310725, 524288, 5, 1114118, 524288, 5, 1179654, 524288, 5, 1245190, 524288, 5, 1310726, 524288, 5, 1114119, 524288, 5, 1179655, 524288, 5, 1245191, 524288, 5, 1310727, 524288, 5, 1114120, 524288, 5, 1179656, 524288, 5, 1245192, 524288, 5, 1310728, 524288, 5, 1114121, 524288, 5, 1179657, 524288, 5, 1245193, 524288, 5, 1310729, 524288, 5, 1114122, 524288, 5, 1179658, 524288, 5, 1245194, 524288, 5, 1310730, 524288, 5, 1114123, 524288, 5, 1179659, 524288, 5, 1245195, 524288, 5, 1310731, 524288, 5, 1114124, 524288, 5, 1179660, 524288, 5, 1245196, 524288, 5, 1310732, 524288, 5, 1114125, 524288, 5, 1179661, 524288, 5, 1245197, 524288, 5, 1310733, 524288, 5, 1114137, 524288, 5, 1179673, 524288, 5, 1245209, 524288, 5, 1310745, 524288, 5, 1114138, 524288, 5, 1179674, 524288, 5, 1245210, 524288, 5, 1310746, 524288, 5, 1114139, 524288, 5, 1179675, 524288, 5, 1245211, 524288, 5, 1310747, 524288, 5, 1114140, 524288, 5, 1179676, 524288, 5, 1245212, 524288, 5, 1310748, 524288, 5, 1114141, 524288, 5, 1179677, 524288, 5, 1245213, 524288, 5, 1310749, 524288, 5, 1114142, 524288, 5, 1179678, 524288, 5, 1245214, 524288, 5, 1310750, 524288, 5, 1114143, 524288, 5, 1179679, 524288, 5, 1245215, 524288, 5, 1310751, 524288, 5, 1114144, 524288, 5, 1179680, 524288, 5, 1245216, 524288, 5, 1310752, 524288, 5, 1114145, 524288, 5, 1179681, 524288, 5, 1245217, 524288, 5, 1310753, 524288, 5, 1114146, 524288, 5, 1179682, 524288, 5, 1245218, 524288, 5, 1310754, 524288, 5)
 

@@ -3,6 +3,7 @@ extends Node2D
 func _ready():
 	LightSwitchController.reload()
 	LightSwitchController.blue()
+	BGM.play()
 
 func next_level():
 	get_tree().change_scene_to_file("res://levels/level_2.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cdgg8xdvxxb4t"]
+[gd_scene load_steps=31 format=3 uid="uid://cdgg8xdvxxb4t"]
 
 [ext_resource type="Script" path="res://character_script.gd" id="1_7opwn"]
 [ext_resource type="Script" path="res://levels-scripts/level_7_script.gd" id="1_53o25"]
@@ -7,10 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://dodimdsaeofg2" path="res://vendor/1-Bit Platformer Pack/Tiles/Transparent/tile_0097.png" id="4_bee6l"]
 [ext_resource type="AudioStream" uid="uid://did7rv621lxv1" path="res://sfx/light-switch-81967.mp3" id="4_i7kcu"]
 [ext_resource type="SpriteFrames" uid="uid://d0dbjj6xx7jjl" path="res://door_anim.tres" id="5_bc3pl"]
+[ext_resource type="AudioStream" uid="uid://d2hptohti3ffr" path="res://sfx/350905__cabled_mess__jump_c_05.wav" id="5_hf7ys"]
 [ext_resource type="Texture2D" uid="uid://b4fg2kx57xe6l" path="res://switch.png" id="6_3yudp"]
+[ext_resource type="AudioStream" uid="uid://cmi0y0sx75m8n" path="res://sfx/landing.wav" id="6_qub3c"]
 [ext_resource type="Script" path="res://BackgroundColor.gd" id="7_7cm86"]
+[ext_resource type="AudioStream" uid="uid://b4wsmff00tpa4" path="res://sfx/646672__sounddesignforyou__coin-pickup-sfx-2.wav" id="7_36sud"]
 [ext_resource type="Script" path="res://moving_platform.gd" id="8_8wy0p"]
+[ext_resource type="AudioStream" uid="uid://bm0fw758kdtxr" path="res://sfx/443276__loscolt890__gravelfootstep003.wav" id="8_ryqlp"]
+[ext_resource type="AudioStream" uid="uid://bax220aygkbcx" path="res://sfx/443277__loscolt890__gravelfootstep002.wav" id="9_skog3"]
 [ext_resource type="Texture2D" uid="uid://clhts5qkj1dsf" path="res://level-design/7.PNG" id="9_wr1oi"]
+[ext_resource type="AudioStream" uid="uid://yl7a41422l1" path="res://sfx/443278__loscolt890__gravelfootstep001.wav" id="10_kuybn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyr5i"]
 size = Vector2(7, 8)
@@ -172,6 +178,35 @@ one_shot = true
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="CharacterBody2D"]
 stream = ExtResource("4_i7kcu")
+volume_db = -10.0
+
+[node name="Jump" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("5_hf7ys")
+
+[node name="Land" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("6_qub3c")
+volume_db = -10.0
+
+[node name="KeyPick" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("7_36sud")
+volume_db = -3.0
+
+[node name="FootstepsSFX" type="Node" parent="CharacterBody2D"]
+
+[node name="FS1" type="AudioStreamPlayer" parent="CharacterBody2D/FootstepsSFX"]
+stream = ExtResource("8_ryqlp")
+volume_db = -10.0
+pitch_scale = 4.0
+
+[node name="FS2" type="AudioStreamPlayer" parent="CharacterBody2D/FootstepsSFX"]
+stream = ExtResource("9_skog3")
+volume_db = -10.0
+pitch_scale = 4.0
+
+[node name="FS3" type="AudioStreamPlayer" parent="CharacterBody2D/FootstepsSFX"]
+stream = ExtResource("10_kuybn")
+volume_db = -10.0
+pitch_scale = 4.0
 
 [node name="SpawnMark" type="Marker2D" parent="."]
 position = Vector2(57, 260)

@@ -18,10 +18,22 @@ var _has_the_key: bool = false
 var _on_blue_switch: bool = false
 var _on_red_switch: bool = false
 var _jump_acc: float = 0
+var _jump_sfx: AudioStreamPlayer
+var _land_sfx: AudioStreamPlayer
+var _key_pickup_sfx: AudioStreamPlayer
+
+var _footstep_sfx = []
+var _footstep_acc = 0
 
 func _ready():
 	_initial_jump_force = jump_force
 	position = spawn.position
+	_jump_sfx = $Jump
+	_land_sfx = $Land
+	_key_pickup_sfx = $KeyPick
+	_footstep_sfx.append($FootstepsSFX/FS1)
+	_footstep_sfx.append($FootstepsSFX/FS2)
+	_footstep_sfx.append($FootstepsSFX/FS3)
 
 func _process(delta):
 	if _stop:
@@ -43,15 +55,24 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("jump") and !_jumping:
 		_jumping = true
+		if _jump_sfx != null:
+			_jump_sfx.play()
 
 	if Input.is_action_pressed("left"):
 		_direction = -1
 		$AnimatedSprite2D.flip_h = true
+		
+		if !_jumping:
+			_play_footstep_sfx(delta)
 	elif Input.is_action_pressed("right"):
 		_direction = 1
 		$AnimatedSprite2D.flip_h = false
+		
+		if !_jumping:
+			_play_footstep_sfx(delta)
 	else:
 		_direction = 0
+		_footstep_acc = 1
 	
 	if _jumping and !Input.is_action_pressed("jump") and jump_force > 0:
 		jump_force = 0
@@ -83,6 +104,10 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body):
 	if _dead:
 		return
+		
+	if _jumping:
+		if _land_sfx != null:
+			_land_sfx.play()
 
 	_jumping = false
 	jump_force = _initial_jump_force
@@ -113,6 +138,9 @@ func _on_pick_area_entered(area: Area2D):
 		_has_the_key = true
 		_key = area.get_parent()
 		_key.hide()
+		
+		if _key_pickup_sfx != null:
+			_key_pickup_sfx.play()
 
 		if area.is_in_group("light_switch_blue"):
 			LightSwitchController.blue()
@@ -149,3 +177,13 @@ func _on_body_body_entered(body):
 		_direction = 0
 		velocity = Vector2.ZERO
 		_jumping = false
+
+func _play_footstep_sfx(delta: float):
+	var r = randi() % 3
+	
+	if _footstep_acc < 0.3:
+		_footstep_acc += delta
+
+	if _footstep_sfx[r] != null and _footstep_acc > 0.16666:
+		_footstep_sfx[r].play()
+		_footstep_acc = 0

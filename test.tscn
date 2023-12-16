@@ -1,8 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://ccov4smcx3rt"]
+[gd_scene load_steps=23 format=3 uid="uid://ccov4smcx3rt"]
 
 [ext_resource type="Script" path="res://character_script.gd" id="2_sicxh"]
 [ext_resource type="SpriteFrames" uid="uid://gtxt1ly4x1kq" path="res://character_anim.tres" id="2_t1kum"]
 [ext_resource type="AudioStream" uid="uid://did7rv621lxv1" path="res://sfx/light-switch-81967.mp3" id="3_eolgk"]
+[ext_resource type="AudioStream" uid="uid://d2hptohti3ffr" path="res://sfx/350905__cabled_mess__jump_c_05.wav" id="4_cgclu"]
+[ext_resource type="AudioStream" uid="uid://cmi0y0sx75m8n" path="res://sfx/landing.wav" id="5_smipg"]
+[ext_resource type="AudioStream" uid="uid://b4wsmff00tpa4" path="res://sfx/646672__sounddesignforyou__coin-pickup-sfx-2.wav" id="6_6vus7"]
 [ext_resource type="Texture2D" uid="uid://dodimdsaeofg2" path="res://vendor/1-Bit Platformer Pack/Tiles/Transparent/tile_0097.png" id="6_nj1o6"]
 [ext_resource type="SpriteFrames" uid="uid://d0dbjj6xx7jjl" path="res://door_anim.tres" id="7_xhmvf"]
 [ext_resource type="Texture2D" uid="uid://b4fg2kx57xe6l" path="res://switch.png" id="8_8mwvd"]
@@ -99,6 +102,17 @@ shape = SubResource("RectangleShape2D_4lccq")
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="CharacterBody2D"]
 stream = ExtResource("3_eolgk")
+
+[node name="Jump" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("4_cgclu")
+
+[node name="Land" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("5_smipg")
+volume_db = -10.0
+
+[node name="KeyPick" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("6_6vus7")
+volume_db = -3.0
 
 [node name="SpawnMark" type="Marker2D" parent="."]
 position = Vector2(53, 223)
