@@ -22,9 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://brr5rlfcbdx3m" path="res://level-design/5.PNG" id="12_shbov"]
 [ext_resource type="AudioStream" uid="uid://cc73am6r5lk0k" path="res://sfx/death.wav" id="12_u5u6s"]
 [ext_resource type="Script" path="res://switch-script.gd" id="17_cmuka"]
-[ext_resource type="SpriteFrames" uid="uid://cn24656k70xrj" path="res://switch-anim.tres" id="18_86821"]
+[ext_resource type="SpriteFrames" uid="uid://dk6mfc4necitn" path="res://switch-anim.tres" id="18_86821"]
 [ext_resource type="Script" path="res://bat_script.gd" id="24_onxfc"]
-[ext_resource type="SpriteFrames" uid="uid://bdlhceaja6nmv" path="res://bat.tres" id="25_elgqw"]
+[ext_resource type="SpriteFrames" uid="uid://c8dh6lcjkviiw" path="res://bat.tres" id="25_elgqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyr5i"]
 size = Vector2(7, 8)

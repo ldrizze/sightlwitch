@@ -20,7 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://yl7a41422l1" path="res://sfx/443278__loscolt890__gravelfootstep001.wav" id="10_dgq3g"]
 [ext_resource type="Texture2D" uid="uid://bxl3d8prbyr2j" path="res://level-design/3.PNG" id="11_w31er"]
 [ext_resource type="Script" path="res://switch-script.gd" id="17_hv2d8"]
-[ext_resource type="SpriteFrames" uid="uid://cn24656k70xrj" path="res://switch-anim.tres" id="17_vsx6i"]
+[ext_resource type="SpriteFrames" uid="uid://dk6mfc4necitn" path="res://switch-anim.tres" id="17_vsx6i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyr5i"]
 size = Vector2(7, 8)

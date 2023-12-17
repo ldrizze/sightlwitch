@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://yl7a41422l1" path="res://sfx/443278__loscolt890__gravelfootstep001.wav" id="10_8mjkd"]
 [ext_resource type="AudioStream" uid="uid://cc73am6r5lk0k" path="res://sfx/death.wav" id="12_2w0x5"]
 [ext_resource type="Script" path="res://switch-script.gd" id="15_k0lce"]
-[ext_resource type="SpriteFrames" uid="uid://cn24656k70xrj" path="res://switch-anim.tres" id="16_jqtwv"]
+[ext_resource type="SpriteFrames" uid="uid://dk6mfc4necitn" path="res://switch-anim.tres" id="16_jqtwv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyr5i"]
 size = Vector2(7, 8)

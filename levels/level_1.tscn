@@ -205,7 +205,7 @@ offset_bottom = 71.0
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.501961)
 theme_override_fonts/font = ExtResource("17_8dn3r")
-text = "Use warrow keys to walk and pick up the key then enter the door"
+text = "Use the arrow keys to walk and pick up the key then enter the door"
 
 [node name="NextSceneTimer" type="Timer" parent="."]
 wait_time = 2.0
