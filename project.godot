@@ -14,7 +14,7 @@ config/name="SightLwitch"
 config/version="v1"
 run/main_scene="res://start.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon_atlas.tres"
+config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 
 [aseprite_importers]

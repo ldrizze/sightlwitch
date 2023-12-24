@@ -239,7 +239,9 @@ script = ExtResource("8_otfcp")
 
 [node name="MPS" type="Node" parent="Map"]
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Map/MPS" node_paths=PackedStringArray("init", "end")]
+[node name="Left" type="Node2D" parent="Map/MPS" groups=["blue"]]
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Map/MPS/Left" node_paths=PackedStringArray("init", "end")]
 modulate = Color(0.380392, 0.4, 1, 1)
 position = Vector2(15, 291)
 collision_layer = 2
@@ -247,25 +249,25 @@ script = ExtResource("9_2tkre")
 init = NodePath("../MPSInit")
 end = NodePath("../MPSEnd")
 
-[node name="Platform" type="TileMap" parent="Map/MPS/AnimatableBody2D"]
+[node name="Platform" type="TileMap" parent="Map/MPS/Left/AnimatableBody2D"]
 position = Vector2(-16, 0)
 tile_set = ExtResource("4_oj0dh")
 format = 2
 layer_0/tile_data = PackedInt32Array(1, 262144, 4, 2, 327680, 4, 3, 393216, 4)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MPS/AnimatableBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MPS/Left/AnimatableBody2D"]
 position = Vector2(24, 3.5)
 shape = SubResource("RectangleShape2D_0jk3o")
 
-[node name="MPSInit" type="Marker2D" parent="Map/MPS"]
+[node name="MPSInit" type="Marker2D" parent="Map/MPS/Left"]
 position = Vector2(15, 291)
 
-[node name="MPSEnd" type="Marker2D" parent="Map/MPS"]
+[node name="MPSEnd" type="Marker2D" parent="Map/MPS/Left"]
 position = Vector2(265, 291)
 
-[node name="MPS2" type="Node" parent="Map"]
+[node name="Right" type="Node2D" parent="Map/MPS" groups=["blue"]]
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Map/MPS2" node_paths=PackedStringArray("init", "end")]
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Map/MPS/Right" node_paths=PackedStringArray("init", "end")]
 modulate = Color(0.380392, 0.4, 1, 1)
 position = Vector2(561, 291)
 collision_layer = 2
@@ -273,20 +275,20 @@ script = ExtResource("9_2tkre")
 init = NodePath("../MPSInit")
 end = NodePath("../MPSEnd")
 
-[node name="Platform" type="TileMap" parent="Map/MPS2/AnimatableBody2D"]
+[node name="Platform" type="TileMap" parent="Map/MPS/Right/AnimatableBody2D"]
 position = Vector2(-16, 0)
 tile_set = ExtResource("4_oj0dh")
 format = 2
 layer_0/tile_data = PackedInt32Array(1, 262144, 4, 2, 327680, 4, 3, 393216, 4)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MPS2/AnimatableBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MPS/Right/AnimatableBody2D"]
 position = Vector2(24, 3.5)
 shape = SubResource("RectangleShape2D_0jk3o")
 
-[node name="MPSInit" type="Marker2D" parent="Map/MPS2"]
+[node name="MPSInit" type="Marker2D" parent="Map/MPS/Right"]
 position = Vector2(561, 291)
 
-[node name="MPSEnd" type="Marker2D" parent="Map/MPS2"]
+[node name="MPSEnd" type="Marker2D" parent="Map/MPS/Right"]
 position = Vector2(313, 291)
 
 [node name="LeftWall" type="StaticBody2D" parent="Map"]
